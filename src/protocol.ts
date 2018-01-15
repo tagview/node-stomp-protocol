@@ -68,7 +68,7 @@ export const StompProtocolHandlerV10: StompProtocolHandler = {
         SEND: {
             validators: [requireHeader('destination')],
             async handle(frame: StompFrame, session: ServerSession) {
-                await session.listener.send(frame.headers);
+                await session.listener.send(frame.headers, frame.body);
             }
         },
         SUBSCRIBE: {
